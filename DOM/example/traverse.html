@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  </head>
+  <body>
+    <div id="root" class="root">
+      <div class="node0">
+        <span class="node00"><i class="node000"></i></span>
+        <span class="node01"><i class="node010"></i></span>
+      </div>
+      <div class="node1">
+        <div class="node10"></div>
+      </div>
+    </div>
+    <script>
+      (() => {
+        const ndRoot = document.getElementById('root');
+        function traverse(root) {
+          const queue = [root];
+          const result = [];
+          while (queue.length) {
+            const node = queue.shift();
+            result.push(`${node.tagName}-${node.className}`)
+            if (!node.children.length) {
+              continue;
+            }
+            Array.from(node.children).forEach(x => queue.push(x));
+          }
+          return result;
+        }
+
+        console.log(traverse(ndRoot));
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>导航下划线跟随效果（CSS实现）</title>
+    <style>
+    ul, li {
+      padding: 0;
+      margin: 0;
+    }
+    ul {
+      font-size: 0
+    }
+    li {
+      position: relative;
+      display: inline-block;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    li::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 0;
+      height: 100%;
+      line-height: 1.2em;
+      border-bottom: 2px solid #000;
+      transition: 0.2s all linear;
+    }
+
+    li:hover::before {
+      width: 100%;
+      left: 0;
+    }
+
+    li:hover ~ li::before {
+      left: 0;
+    }
+
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>不可思议的CSS</li>
+      <li>导航栏</li>
+      <li>光标小下划线跟随</li>
+      <li>PURE CSS</li>
+      <li>Nav Underline</li>
+    </ul>
+    <a href="https://juejin.im/post/5ab9e9056fb9a028be360292">【掘金】不可思议的纯CSS导航栏下划线跟随效果</a>
+  </body>
+</html>

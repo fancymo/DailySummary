@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shuangfeiyi</title>
+    <style>
+      .left {
+        background: #f00;
+        width: 150px;
+        float: left;
+        margin-left: -100%;
+      }
+      .main{
+        background: #eee;
+        width:100%;
+        float:left;
+      }
+      .right{
+        background: #f00;
+        width:190px;
+        float:left;
+        margin-left:-190px;
+      }
+      .inner{
+        margin-left:150px;
+        margin-right:190px;
+      }
+</style>
+</head>
+<body>
+<div class="bd">
+    <div class="main">
+        <div class="inner">   <!-- 这里在中间的div中再嵌套一个div -->
+            内容
+        </div>
+    </div>
+    <div class="left">Left</div>
+    <div class="right">Right
+    </div>
+</div>
+</body>
+</html>

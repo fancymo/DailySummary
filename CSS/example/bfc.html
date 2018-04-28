@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <style>
+      .container {
+        background-color: #876;
+        /*overflow: auto; // 浮动元素也参与高度，用来清除浮动*/
+      }
+      .a {
+        margin: 20px;
+        width: 100px;
+        height: 200px;
+        float: left;
+        background-color: #762;
+      }
+      .b {
+        width: 100px;
+        height: 200px;
+        background-color: #8f0;
+        overflow: auto; // bfc 不与浮动元素
+      }
+      .ct {
+
+      }
+      .ctx {
+        position: sticky;
+        top:10px;margin:20px 10px;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ct">
+      <div class="ctx">test</div>
+    </div>
+    <div class="container">
+      <div class="a">
+      </div>
+      <div class="b">
+      </div>
+    </div>
+    <table>
+      <tr>
+        <td rowspan="2">11</td>
+        <td>22</td>
+      </tr>
+      <tr>
+        <td>22</td>
+      </tr>
+    </table>
+  </body>
+</html>

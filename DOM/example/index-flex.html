@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>浅笑安然系列 - 圣杯布局</title>
+    <style>
+
+        #container {
+          display: flex;
+        }
+
+        #center {
+          flex: 1;
+          background-color: #c00;
+        }
+
+        #left {
+          background: #f00;
+          width: 200px;
+          order: -1;
+        }
+
+        #right {
+          background: #f00;
+          width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+    <div id="container">
+        <div id="center" class="column">center</div>
+        <div id="left" class="column">left</div>
+        <div id="right" class="column">right</div>
+    </div>
+    <div id="footer"></div>
+    <script>
+      function foo(x) {
+        function a(y, z) {
+          return y + z;
+        }
+        return a(x, 1);
+      }
+      console.log(foo(1));
+    </script>
+</body>
+
+</html>

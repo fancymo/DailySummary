@@ -1,0 +1,11 @@
+<script>
+  function counter(state, action) {
+    return state;
+  }
+  except() {
+    counter(0, { type: 'INCREMENT' });
+  }.toEqual(1);
+  except() {
+    counter(1, { type: 'INCREMENT' });
+  }.toEqual(2);
+</script>

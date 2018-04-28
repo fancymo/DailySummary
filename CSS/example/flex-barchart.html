@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <title>flex 实现折线图</title>
+    <style>
+      .container {
+        /* background-color: #876; */
+        display: flex;
+        border-left: 1px solid #000;
+        border-bottom: 1px solid #000;
+        align-items: flex-end;  // 底部
+      }
+
+      .container > div {
+        background-color: #f00;
+        width: 10px;
+        height: 100px;
+        margin-left: 10px;
+      }
+
+      .container .a {
+        height: 20px;
+      }
+      .container .b {
+        height: 40px;
+      }
+
+      .container .d {
+        height: 80px;
+      }
+
+      .container01 {
+        /* background-color: #876; */
+        border-left: 1px solid #000;
+        border-bottom: 1px solid #000;
+      }
+
+      .container01::after {
+        display: table;
+        content: '';
+        clear: both;
+      }
+
+      .container01 > div {
+        background-color: #f00;
+        width: 10px;
+        height: 100px;
+        margin-left: 10px;
+        float: left;
+      }
+
+      .container01 .a {
+        height: 20px;
+      }
+      .container01 .b {
+        height: 40px;
+      }
+
+      .container01 .d {
+        height: 80px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="a">
+      </div>
+      <div class="b">
+      </div>
+      <div class="c">
+      </div>
+      <div class="d">
+      </div>
+    </div>
+
+    <div class="container01">
+      <div class="a">
+      </div>
+      <div class="b">
+      </div>
+      <div class="c">
+      </div>
+      <div class="d">
+        1
+      </div>
+      1
+    </div>
+  </body>
+</html>

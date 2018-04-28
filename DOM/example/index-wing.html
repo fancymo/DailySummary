@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shuangfeiyi</title>
+    <style>
+      .left {
+        background: #f00;
+        width: 150px;
+        float: left;
+        margin-left: -100%;
+      }
+      .main{
+        background: #eee;
+        width:100%;
+        float:left;
+      }
+      .right{
+        background: #f00;
+        width:190px;
+        float:left;
+        margin-left:-190px;
+      }
+      .inner{
+        margin-left:150px;
+        margin-right:190px;
+      }
+</style>
+</head>
+<body>
+  <div id="header"></div>
+  <div class="bd">
+    <div class="main">
+      <div class="inner">   <!-- 这里在中间的div中再嵌套一个div -->
+          内容
+          <div id="c1"></div>
+          <div id="c2"></div>
+      </div>
+    </div>
+    <div class="left">Left<span>div</span></div>
+    <div class="right">Right</div>
+  </div>
+  <div id="footer"></div>
+  <script src="https://gw.alipayobjects.com/os/antv/assets/g2/3.0.4-beta.2/g2.min.js"></script>
+  <script src="https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.3/data-set.min.js"></script>
+  <script>
+    const data = [
+      { state: 'a', '0到12岁': 1, '12到18岁': 3 },
+      { state: 'b', '0到12岁': 1, '12到18岁': 5 },
+      { state: 'c', '0到12岁': 4, '12到18岁': 3 },
+      { state: 'd', '0到12岁': 1, '12到18岁': 4 },
+      { state: 'e', '0到12岁': 6, '12到18岁': 3 }
+    ]; // G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
+
+    const ds = new DataSet({
+      state: {
+        currentState: 'a'
+      }
+    });
+
+    const dvForAll = ds
+      .createView('populationByAge') // 在 DataSet 实例下创建名为 populationByAge 的数据视图
+      .source(data);
+
+      dvForAll.transform({
+        type: 'fold',
+        fields: ['0到12岁','12到18岁'],
+        key: 'age',
+        value: 'population'
+      });
+
+      const dvForOneState = ds
+        .createView('populationOfOneState')
+        .source(dvForAll); // 从全量数据继承，写法也可以是 .source('populationByAge')
+
+      dvForOneState
+        .transform({ // 过滤数据
+          type: 'filter',
+          callback(row) {
+            return row.state === ds.state.currentState;
+          }
+        })
+        .transform({
+          type: 'percent',
+          field: 'population',
+          dimension: 'age',
+          as: 'percent'
+        });
+
+        const c1 = new G2.Chart({
+      id: 'c1',
+      forceFit: true,
+      height: 400,
+    });
+    c1.source(dvForAll);
+    c1.legend({
+      position: 'top',
+    });
+    c1.axis('population', {
+      label: {
+        formatter: val => {
+          return val / 1 + 'M';
+        }
+      }
+    });
+    c1.intervalStack()
+      .position('state*population')
+      .color('age')
+      .select(true, {
+        mode: 'single',
+        style: {
+          stroke: 'red',
+          strokeWidth: 5
+        }
+      });
+    c1.on('tooltip:change', function(evt) {
+      const items = evt.items || [];
+      if (items[0]) {
+        ds.setState('currentState', items[0].title);
+      }
+    });
+
+    const c2 = new G2.Chart({
+      id: 'c2',
+      forceFit: true,
+      height: 300,
+      padding: 0,
+    });
+    c2.source(dvForOneState);
+    c2.coord('theta', {
+      radius: 0.6 // 设置饼图的大小
+    });
+    c2.legend(false);
+    c2.intervalStack()
+      .position('percent')
+      .color('age')
+      .label('age*percent',function(age, percent) {
+        percent = (percent * 100).toFixed(2) + '%';
+        return age + ' ' + percent;
+      });
+
+    c1.render();
+    c2.render();
+    document.querySelector('.left').addEventListener('click', (e) => {
+      console.log(e.target, e.currentTarget);
+    })
+  </script>
+</body>
+</html>

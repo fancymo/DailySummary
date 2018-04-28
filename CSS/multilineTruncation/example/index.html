@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>浅笑安然系列</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 50px;
+            font: 400 16px/1.2em sans-serif;
+            background: white;
+        }
+
+        /* styles for '...' */
+        .block-with-text-i {
+            /* hide text if it more than N lines  */
+            overflow: hidden;
+            /* for set '...' in absolute position */
+            position: relative;
+            /* use this value to count block height */
+            line-height: 1.2em;
+            /* max-height = line-height (1.2) * lines max number (3) */
+            max-height: 3.6em;
+            /* fix problem when last visible word doesn't adjoin right side  */
+            text-align: justify;
+            /* */
+            margin-right: -1em;
+            padding-right: 1em;
+        }
+
+        .block-with-text-i:before {
+            /* points in the end */
+            content: '...';
+            /* absolute position */
+            position: absolute;
+            /* set position to right bottom corner of block */
+            right: 0;
+            bottom: 0;
+        }
+
+        .block-with-text-i:after {
+            /* points in the end */
+            content: '';
+            /* absolute position */
+            position: absolute;
+            /* set position to right bottom corner of text */
+            right: 0;
+            width: 1em;
+            /* set width and height */
+            height: 1em;
+            margin-top: 0.2em;
+            background: white;
+        }
+
+        .block-with-text-ii {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .block-with-text-iii {
+        }
+    </style>
+</head>
+
+<body>
+    <h6>1. Hacker UI</h6>
+    <div class="block-with-text-i">如果有来生，要做一棵树，伪装成永恒的样子，一半在土里扎根，一半在风中摇曳，一半浅笑安然，一半待我去描绘！致在做梦的女孩。</div>
+    <br />
+    <div class="block-with-text-i">我笑，便面如春花，定是能感动人的，不由是非！</div>
+
+    <h6>2. -webkit-line-clamp</h6>
+    <div class="block-with-text-ii">如果有来生，要做一棵树，伪装成永恒的样子，一半在土里扎根，一半在风中摇曳，一半浅笑安然，一半待我去描绘！致在做梦的女孩。</div>
+
+    <h6>3. Hacker UI + 0.0.1</h6>
+    <div class="block-with-text-three">In the creation～</div>
+</body>
+
+</html>

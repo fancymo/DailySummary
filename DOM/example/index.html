@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  </head>
+  <body>
+    <ul id="list"></ul>
+    <script>
+      (() => {
+        const ndContainer = document.getElementById('list');
+        if (!ndContainer) {
+          return;
+        }
+        const total = 3000;
+        const batchSize = 4; // 每次插入的节点次数
+        const batchCount = total / batchSize;
+        let batchDone = 0;  // 已经完成的次数
+
+        function appendItems() {
+          const fragment = document.createDocumentFragment();
+          for (let i = 0; i < batchSize; i++) {
+            const ndItem = document.createElement('li');
+            ndItem.innerText = (batchDone * batchSize) + i + 1;
+            fragment.appendChild(ndItem);
+          }
+          ndContainer.appendChild(fragment);
+          batchDone += 1;
+          doBatchAppend();
+        }
+
+        function doBatchAppend() {
+          if (batchDone < batchCount) {
+            window.requestAnimationFrame(appendItems);
+          }
+        }
+
+        doBatchAppend();
+
+        ndContainer.addEventListener('click', function (e) {
+          const target = e.target;
+          if (target.tagName === 'LI') {
+            console.log(target.name);
+          }
+        })
+      })();
+    </script>
+  </body>
+</html>

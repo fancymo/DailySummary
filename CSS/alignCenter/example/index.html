@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>浅笑安然系列</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 50px;
+            font: 400 16px/1.2em sans-serif;
+            background: white;
+        }
+
+        div {
+            margin-bottom: 20px;
+            color: #fff;
+            background-color: #c19ec5;
+        }
+
+        /* 多行垂直居中 line-height */
+        .vertical-line-single {
+            height: 100px;
+            line-height: 100px;
+        }
+
+        /* 多行垂直居中 伪元素 */
+        .vertical-line-multi-i {
+          height: 120px;
+        }
+
+        .vertical-line-multi-i::before {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 100%;
+            vertical-align: middle;
+        }
+
+        .vertical-line-multi-i p {
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+        /* 多行垂直居中 transform */
+        .vertical-line-multi-ii {
+          position: relative;
+          height: 120px;
+        }
+
+        .vertical-line-multi-ii p {
+          margin: 0;
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        /* 多行垂直 flex*/
+        .vertical-line-multi-iii {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 120px;
+        }
+
+        /* 多行垂直 伪元素 && transform */
+        .vertical-line-multi-iiii {
+          height: 120px;
+        }
+
+        .vertical-line-multi-iiii::before {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 50%;
+        }
+
+        .vertical-line-multi-iiii p {
+          margin: 0;
+          transform: translateY(-50%);
+        }
+
+    </style>
+</head>
+
+<body>
+    <h6>1. 单行垂直居中 -- line-height</h6>
+    <div class="vertical-line-single">不甚了解的情况下，不妨选择倾听！</div>
+    <h6>2. 多行垂直居中 -- 伪元素</h6>
+    <div class="vertical-line-multi-i"><p>三月，欲语还休的季节，思所至，不过方圆，成全自己的小小梦～</p></div>
+    <h6>4. 多行垂直居中 -- transform</h6>
+    <div class="vertical-line-multi-ii"><p>三月，欲语还休的季节，思所至，不过方圆，成全自己的小小梦～</p></div>
+    <h6>5. 多行垂直居中 -- flex</h6>
+    <div class="vertical-line-multi-iii"><p>三月，欲语还休的季节，思所至，不过方圆，成全自己的小小梦～</p></div>
+    <h6>6. 多行垂直居中 -- 伪元素 && transform</h6>
+    <div class="vertical-line-multi-iiii"><p>三月，欲语还休的季节，思所至，不过方圆，成全自己的小小梦～(*_*~)</p></div>
+</body>
+
+</html>
