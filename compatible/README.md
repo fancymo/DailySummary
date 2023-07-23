@@ -18,7 +18,7 @@
 
 - position: fixed: Android 和 iOS 表现不一致
 - display:flex: 需要父元素拥有高度，部分浏览器如 Safari 上 height: 100% 渲染有问题
-- vh: 通过 viewport units 设置元素对高度
+- vh: 通过 viewport units 设置元素的高度
 ps: 该实现在 UC 上有bug， 详细步骤:
 1. 第一个键盘弹出界面点击跳转至下一页；键盘收起，跳转至下一个界面
 2. 第二个界面闪屏后 overflow: auto 元素消失，尝试设置 box-sizing: content-box; padding|margin 时布局正常；
